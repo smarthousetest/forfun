@@ -2,15 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CardView extends StatelessWidget {
-  int number;
+  String image;
   String title;
   String text;
-  CardView({required this.number, required this.title, required this.text});
+  CardView({required this.image, required this.title, required this.text});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 130.0,
+      height: 200.0,
       margin: const EdgeInsets.only(left: 20.0, right: 21.0),
       decoration: BoxDecoration(
         boxShadow: [
@@ -34,21 +34,22 @@ class CardView extends StatelessWidget {
       child: Row(
         children: [
           Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Text(
-              "#$number",
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white),
-            ),
+            padding: const EdgeInsets.only(left: 10),
+            child: Container(
+                height: 50,
+                width: 50,
+                child:
+                    image == 'self' ? Text("No Image") : Image.network(image)),
           ),
-          VerticalDivider(
-            color: Colors.white, //color of divider
-            width: 10, //width space of divider
-            thickness: 0.7, //thickness of divier line
-            indent: 20, //Spacing at the top of divider.
-            endIndent: 20, //Spacing at the bottom of divider.
+          Padding(
+            padding: const EdgeInsets.only(left: 0),
+            child: VerticalDivider(
+              color: Colors.white, //color of divider
+              width: 10, //width space of divider
+              thickness: 0.7, //thickness of divier line
+              indent: 20, //Spacing at the top of divider.
+              endIndent: 20, //Spacing at the bottom of divider.
+            ),
           ),
           Column(
             children: [
@@ -63,7 +64,7 @@ class CardView extends StatelessWidget {
                       child: Text(
                         "$title",
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 15,
                             fontWeight: FontWeight.w500,
                             color: Colors.white),
                       ),
